@@ -139,15 +139,8 @@ class ControllerPaymentPagseguro extends Controller
      * @return void
      */
 	public function confirm() {
-		$this->language->load('payment/pagseguro');
-		
 		$this->load->model('checkout/order');
-		$comment  = $this->language->get('text_payable') . "\n";
-		$comment .= $this->config->get('pagseguro_payable') . "\n\n";
-		$comment .= $this->language->get('text_address') . "\n";
-		$comment .= $this->config->get('config_address') . "\n\n";
-		$comment .= $this->language->get('text_payment') . "\n";
 		
-		$this->model_checkout_order->confirm($this->session->data['order_id'], 1, $comment);
+		$this->model_checkout_order->confirm( $this->session->data['order_id'], $this->config->get('pagseguro_order_status_id') );
 	}
 }
