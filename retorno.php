@@ -86,7 +86,7 @@ function retorno_automatico(
 
 	$log -> setLog('order_status_id : ' . $order_status_id . "\n");
 	
-	$db->query('UPDATE `' . DB_PREFIX . 'order` SET `comment` = ' . $TipoPagamento . ', `order_status_id` = ' . $order_status_id . ' WHERE `order_id` = ' . $Referencia);
+	$db->query('UPDATE `' . DB_PREFIX . 'order` SET `comment` = "' . $TipoPagamento . '", `order_status_id` = ' . $order_status_id . ' WHERE `order_id` = ' . $Referencia);
     $db->query("INSERT INTO `" . DB_PREFIX . "order_history` VALUES (NULL , '" . $Referencia . "', '" . $order_status_id . "', '0', '', NOW());");	
 }
 function createLog($confirma) {
